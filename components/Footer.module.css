@@ -11,5 +11,16 @@
 .inner a { color: #d6d1de; }
 .inner a:hover { color: #fff; }
 .brand { display: flex; align-items: center; gap: 14px; margin-right: auto; }
-.name { color: #fff; font-weight: 700; }
+.name {
+  color: var(--purple-200); /* matches the footer logo */
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
 .copy { color: #b7b0c2; font-size: 14px; }
+
+/* Phones: everything centered in one column, logo stacked above the name. */
+@media (max-width: 640px) {
+  .inner { flex-direction: column; justify-content: center; text-align: center; gap: 18px; }
+  .brand { flex-direction: column; gap: 10px; margin-right: 0; }
+}

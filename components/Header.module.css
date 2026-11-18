@@ -7,4 +7,24 @@
   padding-top: 14px;
   padding-bottom: 14px;
 }
-.logoLink { margin-right: auto; text-decoration: none; }
+.logoLink {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-right: auto;
+  text-decoration: none;
+}
+.name {
+  color: var(--purple); /* matches the header logo */
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* Phones: logo centered and a bit larger; the hero's "Get early access" sits right below. */
+@media (max-width: 640px) {
+  .inner { justify-content: center; }
+  .logoLink { flex-direction: column; gap: 8px; margin-right: 0; }
+  .logoLink svg { height: 54px; }
+  .cta { display: none; }
+}

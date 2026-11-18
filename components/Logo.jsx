@@ -1,15 +1,19 @@
 import styles from './Logo.module.css';
 
+// Logo art spans x 0–378.91; dots sit 18 units out, 22 apart, centered vertically.
+const DOTS = [-62, -40, -18, 396.91, 418.91, 440.91];
+
 /**
  * Purple Line Co. logo (two hands). Drawn inline with fill="currentColor" so the
  * color comes from the brand tokens: --purple on light backgrounds, --purple-200 on dark.
+ * Three decorative dots sit either side of the art (page logo only; the favicon has none).
  */
 export default function Logo({ size = 'md', tone = 'light' }) {
   return (
     <svg
       role="img"
       aria-label="Purple Line Co."
-      viewBox="0 0 378.91 125.49"
+      viewBox="-68 0 514.91 125.49"
       fill="currentColor"
       className={`${styles.logo} ${styles[size]} ${tone === 'dark' ? styles.dark : ''}`}
     >
@@ -22,6 +26,8 @@ export default function Logo({ size = 'md', tone = 'light' }) {
       <path d="M324.62,44.33c-1,1.25-3.68,1.68-4.74,1.23-1.18-.5-3.19-2.49-3.19-3.88,0-2.25,1.57-5.24,3.56-6.14,1.32-.59,3.94,1.3,4.6,2.57.79,1.51,1.15,4.49-.24,6.23Z" />
       <path d="M323.49,84.59c1.26,1,1.55,4.27,1.02,5.56-.56,1.35-2.54,3.31-4.4,3.62-1.32.22-3.79-1.77-4.04-3.06-.3-1.57.41-3.78,1.37-5.31,1.21-1.93,3.99-2.45,6.05-.81Z" />
       <path d="M328.48,76.86c-.78.91-3.98,1.09-5.02.5s-2.64-2.55-2.64-3.91c0-2.06,2.55-5.08,4.53-5.41,1.37-.23,3.54,2,4.06,3.23s.17,4.3-.94,5.58Z" />
+      {/* Three decorative dots either side (page logo only, not the favicon) */}
+      {DOTS.map((cx) => <circle key={cx} cx={cx} cy={62.75} r={5.5} />)}
     </svg>
   );
 }

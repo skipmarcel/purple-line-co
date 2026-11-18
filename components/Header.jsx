@@ -7,8 +7,9 @@ export default function Header() {
       <div className={`container ${styles.inner}`}>
         <a href="#top" className={styles.logoLink} aria-label="Purple Line Co. home">
           <Logo />
+          <span className={styles.name}>Purple Line Co.</span>
         </a>
-        <a className="btn btn-primary" href="#early-access">Get early access</a>
+        <a className={`btn btn-primary ${styles.cta}`} href="#early-access">Get early access</a>
       </div>
     </header>
   );
