@@ -25,7 +25,7 @@ components/
   Hero.jsx             Headline, pitch, buttons ("Watch a check-in" restarts the demo)
   Features.jsx         The three selling points
   EarlyAccess.jsx      Waitlist form (email, shop, artists) with validation + success state
-  Footer.jsx           Logo placeholder, email, Instagram
+  Footer.jsx           Logo placeholder, email
   LogoPlaceholder.jsx  Dashed "Logo" box. Swap for the real logo here
   icons.jsx            Inline Lucide-style SVG icons
   KioskDemo/
@@ -45,9 +45,9 @@ public/                Put logo.svg, favicon, og-image.png here
       then copy `.env.example` to `.env.local` and set `NEXT_PUBLIC_WAITLIST_ENDPOINT`.
       Also set it in Vercel/Netlify project settings. Without it the form only shows the success state.
 - [ ] **Founding-shop offer**: replace "a special launch rate" in `components/EarlyAccess.jsx` with the real offer.
-- [ ] **Instagram**: real handle in `components/Footer.jsx`.
+- [ ] **Instagram**: add a link in `components/Footer.jsx` once the handle exists (removed for now).
 - [ ] **Favicon + social image**: `app/icon.png` and `app/opengraph-image.png` (Next picks these up automatically).
-- [ ] **Email**: set up the hello@purplelineco.com mailbox.
+- [ ] **Email**: set up the hello@purplelineco.com mailbox, then point the `mailto:` links in `Footer.jsx` and `EarlyAccess.jsx` at it (they go to a personal Gmail for now).
 
 ## Deploy
 

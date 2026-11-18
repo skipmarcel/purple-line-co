@@ -6,7 +6,13 @@ import styles from './EarlyAccess.module.css';
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const ENDPOINT = process.env.NEXT_PUBLIC_WAITLIST_ENDPOINT;
-const EMPTY = { email: '', shop: '', artists: '' };
+const EMPTY = { email: '', shop: '', artists: '', _gotcha: '' };
+const FALLBACK_ERROR = (
+  <>
+    Something went wrong. Please try again, or email{' '}
+    <a href="mailto:skipmarcel@gmail.com">hello@purplelineco.com</a>.
+  </>
+);
 
 const PERKS = [
   'Founding-shop pricing, locked in',
@@ -29,9 +35,15 @@ export default function EarlyAccess() {
     if (!EMAIL_RE.test(form.email.trim())) return setError('Enter a valid email address.');
     if (!form.shop.trim()) return setError('Add your shop name.');
 
-    // No endpoint configured yet (local dev): show the success state without sending.
     if (!ENDPOINT) {
-      setStatus('sent');
+      // Local dev without an endpoint: fake the success state so the UI can be checked.
+      // In a production build, never pretend a signup was saved.
+      if (process.env.NODE_ENV !== 'production') {
+        console.warn('NEXT_PUBLIC_WAITLIST_ENDPOINT is not set; signup was not sent.');
+        setStatus('sent');
+      } else {
+        setError(FALLBACK_ERROR);
+      }
       return;
     }
 
@@ -40,13 +52,26 @@ export default function EarlyAccess() {
       const res = await fetch(ENDPOINT, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({ ...form, source: 'purplelineco.com coming soon' }),
+        body: JSON.stringify({
+          email: form.email.trim(),
+          shop: form.shop.trim(),
+          artists: form.artists || 'Not given',
+          source: 'purplelineco.com coming soon',
+          _subject: `Early access: ${form.shop.trim()}`,
+          _gotcha: form._gotcha, // Formspree honeypot: bots fill it, people never see it
+        }),
       });
-      if (!res.ok) throw new Error(`Request failed: ${res.status}`);
+      if (!res.ok) {
+        // Formspree returns { errors: [{ message }] } on validation problems.
+        const data = await res.json().catch(() => null);
+        const message = data?.errors?.map((err) => err.message).join(' ');
+        throw new Error(message || `Request failed: ${res.status}`);
+      }
       setStatus('sent');
-    } catch {
+    } catch (err) {
+      console.error('Waitlist signup failed:', err);
       setStatus('idle');
-      setError("Something went wrong. Please try again, or email hello@purplelineco.com.");
+      setError(FALLBACK_ERROR);
     }
   }
 
@@ -103,6 +128,11 @@ export default function EarlyAccess() {
                 <option value="7-12">7–12</option>
                 <option value="13+">13 or more</option>
               </select>
+            </div>
+            <div className="visually-hidden" aria-hidden="true">
+              <label htmlFor="ea-gotcha">Leave this field empty</label>
+              <input id="ea-gotcha" type="text" name="_gotcha" tabIndex={-1} autoComplete="off"
+                value={form._gotcha} onChange={update('_gotcha')} />
             </div>
             {error && <p role="alert" className={styles.error}>{error}</p>}
             <button type="submit" className={`btn btn-primary btn-lg ${styles.submit}`} disabled={status === 'sending'}>
