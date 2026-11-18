@@ -1,0 +1,15 @@
+.footer { background: var(--dark); color: #d6d1de; }
+.inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px 32px;
+  align-items: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  font-size: 15px;
+}
+.inner a { color: #d6d1de; }
+.inner a:hover { color: #fff; }
+.brand { display: flex; align-items: center; gap: 14px; margin-right: auto; }
+.name { color: #fff; font-weight: 700; }
+.copy { color: #b7b0c2; font-size: 14px; }

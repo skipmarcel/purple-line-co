@@ -1,0 +1,60 @@
+.section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 48px;
+  align-items: flex-start;
+  padding-top: 88px;
+  padding-bottom: 88px;
+}
+.copy { flex: 1 1 380px; min-width: 0; display: flex; flex-direction: column; gap: 16px; }
+.copy :global(.eyebrow) { margin: 0; }
+.title {
+  margin: 0;
+  font-size: clamp(30px, 4vw, 46px);
+  line-height: 1.06;
+  letter-spacing: -0.03em;
+  font-weight: 800;
+}
+.lede { margin: 0; font-size: 18px; color: var(--muted); line-height: 1.6; }
+.perks { margin: 8px 0 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 12px; }
+.perks li { display: flex; gap: 12px; align-items: flex-start; }
+.perks svg { flex: none; }
+
+.card {
+  flex: 1 1 440px;
+  min-width: 0;
+  background: #fff;
+  border: 1px solid #e1dce8;
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  box-shadow: 0 24px 50px -28px rgba(90, 44, 160, 0.35);
+}
+.form { display: flex; flex-direction: column; gap: 18px; }
+.field { display: flex; flex-direction: column; gap: 6px; }
+.field label { font-size: 14px; font-weight: 600; color: #3a3640; }
+.input {
+  width: 100%;
+  min-height: 50px;
+  padding: 0 16px;
+  border: 1px solid var(--line-strong);
+  border-radius: 12px;
+  font: inherit;
+  font-size: 16px;
+  color: var(--ink);
+  background: #fff;
+}
+.input:hover { border-color: #b7b0c2; }
+.input:focus-visible { outline: none; border-color: var(--purple); box-shadow: 0 0 0 3px rgba(90, 44, 160, 0.18); }
+.error { margin: 0; color: var(--error); font-weight: 600; font-size: 15px; }
+.submit { justify-content: space-between; }
+.fine { margin: 0; font-size: 13px; color: var(--muted-2); }
+
+.success { display: flex; flex-direction: column; gap: 14px; padding: 12px 0; }
+.success :global(.btn) { align-self: flex-start; }
+.successIcon {
+  width: 64px; height: 64px; border-radius: 50%;
+  background: var(--purple);
+  display: grid; place-items: center;
+}
+.successTitle { margin: 0; font-size: 28px; font-weight: 800; letter-spacing: -0.02em; }
+.successBody { margin: 0; color: var(--muted); line-height: 1.6; }

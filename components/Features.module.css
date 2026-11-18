@@ -1,0 +1,22 @@
+.section {
+  background: var(--surface);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  border-top: 3px solid var(--purple);
+  padding-top: 24px;
+}
+.icon { color: var(--purple); display: inline-flex; }
+.title { margin: 0; font-size: 22px; font-weight: 700; }
+.body { margin: 0; color: var(--muted); line-height: 1.6; }

@@ -1,0 +1,87 @@
+.section {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 20px var(--gutter) 88px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  scroll-margin-top: 24px;
+}
+
+/* Leaves room on the left for the ID Scan Shelf drawing */
+.figure { margin: 0; position: relative; padding-left: 15%; }
+
+.bezel {
+  background: var(--dark);
+  border-radius: 34px;
+  padding: 16px;
+  box-shadow: 0 40px 80px -30px rgba(45, 28, 80, 0.45);
+}
+.screen {
+  position: relative;
+  width: 100%;
+  background: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  padding-left: 15%;
+}
+.playBtn { min-height: 44px; padding: 0 18px; font-size: 15px; }
+.stepLabel { font-size: 15px; font-weight: 600; color: #3a3640; min-width: 190px; }
+.progress { flex: 1 1 200px; height: 4px; background: #e1dce8; border-radius: 4px; overflow: hidden; }
+.progressFill { height: 4px; background: var(--purple); }
+
+/* ---- ID Scan Shelf (the physical accessory, drawn beside the iPad) ---- */
+.shelf {
+  position: absolute;
+  left: 0;
+  top: 5%;
+  width: 14%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.shelfRow { display: flex; align-items: center; }
+.shelfPlate {
+  position: relative;
+  width: 82%;
+  aspect-ratio: 1 / 1.05;
+  border-radius: 10px;
+  background: #2a272f;
+  overflow: hidden;
+  box-shadow: 0 10px 20px -10px rgba(29, 27, 31, 0.5);
+}
+.shelfArm { flex: 1; height: 10px; background: #3a3640; }
+.shelfLabel { width: 82%; text-align: center; font-size: 12px; font-weight: 600; color: var(--muted-2); }
+.miniCard {
+  position: absolute;
+  left: 8%;
+  top: 30%;
+  width: 84%;
+  aspect-ratio: 1.586;
+  border-radius: 6px;
+  background: var(--line);
+  box-shadow: 0 4px 10px rgba(29, 27, 31, 0.18);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.miniCardTop { height: 22%; background: var(--muted-2); }
+.miniCardBody { flex: 1; display: flex; gap: 8%; padding: 6%; }
+.miniCardPhoto { width: 28%; background: #c9c3d2; border-radius: 3px; }
+.miniCardLines { flex: 1; display: flex; flex-direction: column; gap: 4px; }
+.miniCardLines span { height: 4px; background: #b7b0c2; }
+.miniCardLines span:first-child { height: 5px; background: #9a93a6; width: 90%; }
+.miniCardLines span:nth-child(2) { width: 70%; }
+.miniCardLines span:nth-child(3) { width: 60%; }
+
+@media (max-width: 640px) {
+  .figure, .controls { padding-left: 0; }
+  .shelf { display: none; }
+}
