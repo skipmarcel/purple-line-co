@@ -1,4 +1,4 @@
-import LogoPlaceholder from './LogoPlaceholder';
+import Logo from './Logo';
 import styles from './Header.module.css';
 
 export default function Header() {
@@ -6,7 +6,7 @@ export default function Header() {
     <header className={styles.header}>
       <div className={`container ${styles.inner}`}>
         <a href="#top" className={styles.logoLink} aria-label="Purple Line Co. home">
-          <LogoPlaceholder />
+          <Logo />
         </a>
         <a className="btn btn-primary" href="#early-access">Get early access</a>
       </div>

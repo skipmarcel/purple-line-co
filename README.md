@@ -21,12 +21,12 @@ app/
   page.js              Puts the sections in order
   globals.css          Brand tokens (colors, radii), buttons, base styles
 components/
-  Header.jsx           Logo placeholder + "Get early access"
+  Header.jsx           Logo + "Get early access"
   Hero.jsx             Headline, pitch, buttons ("Watch a check-in" restarts the demo)
   Features.jsx         The three selling points
   EarlyAccess.jsx      Waitlist form (email, shop, artists) with validation + success state
-  Footer.jsx           Logo placeholder, email
-  LogoPlaceholder.jsx  Dashed "Logo" box. Swap for the real logo here
+  Footer.jsx           Logo, email
+  Logo.jsx             Two-hands logo as inline SVG, colored by brand tokens
   icons.jsx            Inline Lucide-style SVG icons
   KioskDemo/
     KioskDemo.jsx      The iPad frame, scaling, play/pause, progress
@@ -40,13 +40,14 @@ public/                Put logo.svg, favicon, og-image.png here
 
 ## Before launch: TODO
 
-- [ ] **Logo**: add it to `public/` and update `components/LogoPlaceholder.jsx` (used in header + footer).
+- [x] **Logo**: `components/Logo.jsx` (header + footer). Brand-purple copy in `public/logo.svg`.
 - [ ] **Waitlist form**: create a form endpoint (Formspree, Tally webhook, Mailchimp, or a Next.js API route),
       then copy `.env.example` to `.env.local` and set `NEXT_PUBLIC_WAITLIST_ENDPOINT`.
       Also set it in Vercel/Netlify project settings. Without it the form only shows the success state.
 - [ ] **Founding-shop offer**: replace "a special launch rate" in `components/EarlyAccess.jsx` with the real offer.
 - [ ] **Instagram**: add a link in `components/Footer.jsx` once the handle exists (removed for now).
-- [ ] **Favicon + social image**: `app/icon.png` and `app/opengraph-image.png` (Next picks these up automatically).
+- [x] **Favicon**: `app/icon.svg` + `app/apple-icon.png` (white logo on brand purple).
+- [ ] **Social image**: `app/opengraph-image.png` (1200×630; Next picks it up automatically).
 - [ ] **Email**: set up the hello@purplelineco.com mailbox, then point the `mailto:` links in `Footer.jsx` and `EarlyAccess.jsx` at it (they go to a personal Gmail for now).
 
 ## Deploy

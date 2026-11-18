@@ -1,0 +1,5 @@
+.logo { display: block; width: auto; color: var(--purple); }
+.md { height: 44px; }
+.sm { height: 34px; }
+/* Brand purple is too dark to read on the footer; use the light brand tint there. */
+.dark { color: var(--purple-200); }

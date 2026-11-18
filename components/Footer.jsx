@@ -1,4 +1,4 @@
-import LogoPlaceholder from './LogoPlaceholder';
+import Logo from './Logo';
 import styles from './Footer.module.css';
 
 export default function Footer() {
@@ -6,7 +6,7 @@ export default function Footer() {
     <footer className={styles.footer}>
       <div className={`container ${styles.inner}`}>
         <div className={styles.brand}>
-          <LogoPlaceholder size="sm" tone="dark" />
+          <Logo size="sm" tone="dark" />
           <span className={styles.name}>Purple Line Co.</span>
         </div>
         <a href="mailto:skipmarcel@gmail.com">hello@purplelineco.com</a>

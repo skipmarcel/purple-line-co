@@ -30,4 +30,4 @@ The goal of this page is to collect early-access signups from shop owners.
 - The demo pauses when off screen and doesn't autoplay for reduced-motion users.
 
 ## Open items
-See the TODO list in README.md (logo, form endpoint, founding offer, Instagram, favicon/OG image).
+See the TODO list in README.md (form endpoint, founding offer, Instagram, social/OG image).
